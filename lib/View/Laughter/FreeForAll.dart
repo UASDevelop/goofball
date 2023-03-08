@@ -1,0 +1,58 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:goofbal/Utilities/constant/Colors.dart';
+import 'package:goofbal/Utilities/constant/Strings.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class Freeforall extends StatefulWidget {
+  const Freeforall({Key? key}) : super(key: key);
+
+  @override
+  State<Freeforall> createState() => _FreeforallState();
+}
+
+class _FreeforallState extends State<Freeforall> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(59),
+          child: Container(
+            decoration: BoxDecoration(
+                color: AppColors.blue,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(5),
+                    bottomRight: Radius.circular(5))),
+            height: 130,
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.only(top:20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width:10,),
+                  InkWell(
+                    onTap:(){
+                      Get.back();
+                    },
+                    child:Icon(Icons.arrow_back,color:AppColors.white_grey,),
+                  ),
+                  SizedBox(width:119,),
+                  Text(
+                    AppString.Free_For_All,
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        color: AppColors.white_grey),
+                  )
+                ],
+              ),
+            ),
+          )),
+      backgroundColor: AppColors.grey,
+    );
+  }
+}
