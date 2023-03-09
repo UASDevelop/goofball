@@ -8,17 +8,15 @@ import '../../Utilities/constant/Colors.dart';
 import '../../Utilities/constant/Strings.dart';
 import '../../Utilities/constant/images.dart';
 import '../Chatting/chatuser.dart';
-import 'Editingprofile.dart';
-import 'creatpost.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+class Publicprofile extends StatefulWidget {
+  const Publicprofile({Key? key}) : super(key: key);
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<Publicprofile> createState() => _PublicprofileState();
 }
 
-class _ProfileState extends State<Profile> {
+class _PublicprofileState extends State<Publicprofile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +65,7 @@ class _ProfileState extends State<Profile> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(left: 10, right: 10,top:20),
+            padding:  EdgeInsets.only(left:10,right:10,top:20),
             child: Column(
               children: [
                 CircleAvatar(
@@ -78,32 +76,33 @@ class _ProfileState extends State<Profile> {
                     size: 50,
                   ),
                 ),
-                SizedBox(height: 5),
+                SizedBox(height:5),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      "John Smith",
+                      AppString.Walter_Williams,
                       style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: AppColors.black),
                     ),
                     SizedBox(
-                      width: 90,
+                      width: 50,
                     ),
                     InkWell(
-                        onTap: () {
-                          Get.to(Chattinguser());
-                        },
-                        child: Image.asset(Images.setting,color:AppColors.greytext,)),
-                    SizedBox(
-                      width: 25,
-                    ),
+                      onTap:(){
+                        Get.to(Chattinguser());
+                      },
+                      child:
+
+                    Image.asset(Images.chat1)),
+                    SizedBox(width:25,),
                   ],
                 ),
-                SizedBox(height: 5),
+                SizedBox(height:5),
+
                 Text(
                   AppString.Comedian,
                   style: GoogleFonts.poppins(
@@ -111,28 +110,26 @@ class _ProfileState extends State<Profile> {
                       fontWeight: FontWeight.w400,
                       color: AppColors.greytext),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height:20,),
                 Padding(
-                  padding: const EdgeInsets.only(left: 18, right: 18),
+                  padding: const EdgeInsets.only(left:18,right:18),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment:CrossAxisAlignment.start,
+                    mainAxisAlignment:MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         children: [
                           Text(
                             "2022",
                             style: GoogleFonts.poppins(
-                                fontSize: 20,
+                                fontSize:20,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.black),
                           ),
                           Text(
                             AppString.Joined,
                             style: GoogleFonts.poppins(
-                                fontSize: 14,
+                                fontSize:14,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.greytext),
                           )
@@ -143,32 +140,31 @@ class _ProfileState extends State<Profile> {
                           Text(
                             "216",
                             style: GoogleFonts.poppins(
-                                fontSize: 20,
+                                fontSize:20,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.black),
                           ),
                           Text(
                             AppString.Laughters,
                             style: GoogleFonts.poppins(
-                                fontSize: 14,
+                                fontSize:14,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.greytext),
                           )
                         ],
-                      ),
-                      Column(
+                      ), Column(
                         children: [
                           Text(
                             "203",
                             style: GoogleFonts.poppins(
-                                fontSize: 20,
+                                fontSize:20,
                                 fontWeight: FontWeight.w600,
                                 color: AppColors.black),
                           ),
                           Text(
                             AppString.Frowners,
                             style: GoogleFonts.poppins(
-                                fontSize: 14,
+                                fontSize:14,
                                 fontWeight: FontWeight.w400,
                                 color: AppColors.greytext),
                           )
@@ -177,35 +173,59 @@ class _ProfileState extends State<Profile> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                InkWell(
-                  onTap:(){
-                    Get.to(EditProfile());
-                  },
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.blue),
-                    width: MediaQuery.of(context).size.width / 1.1,
-                    child: Center(
-                      child: Text(
-                        AppString.Edit_Profile,
-                        style: GoogleFonts.poppins(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.white_grey),
+                SizedBox(height:20,),
+
+                Row(
+                  crossAxisAlignment:CrossAxisAlignment.center,
+                  mainAxisAlignment:MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      decoration:BoxDecoration(
+                        color:Colors.white,
+                        borderRadius:BorderRadius.circular(20),
+                        border:Border.all(
+                          width:.5,
+                          color:AppColors.Brigh_orange
+                        )
+                      ),
+                      height:50,
+                      width:MediaQuery.of(context).size.width/2.3,
+                      child:Row(
+                        crossAxisAlignment:CrossAxisAlignment.center,
+                        mainAxisAlignment:MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.insert_emoticon,color:AppColors.Brigh_orange,),
+                          SizedBox(width:4,),
+                          Text(AppString.Be_a_Frowners,style:GoogleFonts.poppins(fontWeight:FontWeight.w500,color:AppColors.Brigh_orange,fontSize:15),)
+                        ],
                       ),
                     ),
-                  ),
+                    Container(
+                      decoration:BoxDecoration(
+                          color:AppColors.Brigh_orange,
+                          borderRadius:BorderRadius.circular(20),
+                          border:Border.all(
+                              width:.5,
+                              color:Colors.white
+                          )
+                      ),
+                      height:50,
+                      width:MediaQuery.of(context).size.width/2.3,
+                      child:Row(
+                        crossAxisAlignment:CrossAxisAlignment.center,
+                        mainAxisAlignment:MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.emoji_emotions_sharp,color:Colors.white,),
+                          SizedBox(width:4,),
+                          Text(AppString.Be_a_Laugher,style:GoogleFonts.poppins(fontWeight:FontWeight.w500,color:Colors.white,fontSize:15),)
+                        ],
+                      ),
+                    )
+                  ],
                 ),
-                SizedBox(
-                  height: 15,
-                ),
+                SizedBox(height:15,),
                 Container(
-                  height: 400,
+                  height:400,
                   child: GridView.count(
                     // cacheExtent:220,
                     crossAxisCount: 2,
@@ -215,7 +235,7 @@ class _ProfileState extends State<Profile> {
                     // physics:NeverScrollableScrollPhysics(),
                     children: List.generate(
                       14,
-                      (index) {
+                          (index) {
                         return Padding(
                           padding: const EdgeInsets.only(left: 5, right: 5),
                           child: Container(
@@ -229,22 +249,15 @@ class _ProfileState extends State<Profile> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(
-                                  "Here We will display the videos",
-                                  textAlign: TextAlign.center,
-                                ),
-                                SizedBox(
-                                  height: 30,
-                                ),
+                                Text("Here We will display the videos",textAlign:TextAlign.center,),
+                                SizedBox(height:30,),
                                 Container(
-                                  margin: EdgeInsets.only(
-                                      left: 10, right: 10, bottom: 20),
+                                  margin: EdgeInsets.only(left: 10, right: 10, bottom: 20),
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
                                       border: Border.all(
-                                          width: 1,
-                                          color: AppColors.Brigh_orange)),
+                                          width: 1, color: AppColors.Brigh_orange)),
                                   height: 40,
                                   width: MediaQuery.of(context).size.width,
                                   child: Center(
@@ -269,14 +282,6 @@ class _ProfileState extends State<Profile> {
             ),
           ),
         ),
-      ),
-      floatingActionButton:FloatingActionButton(
-        backgroundColor:AppColors.blue,
-        elevation:10,
-        onPressed:(){
-          Get.to(Createpost());
-        },
-        child:Icon(Icons.add,color:Colors.white,),
       ),
     );
   }

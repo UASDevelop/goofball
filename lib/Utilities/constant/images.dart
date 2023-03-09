@@ -11,4 +11,7 @@ class  Images{
   static const String favourite="assets/images/favourite.png";
   static const String microphone="assets/images/microphone.png";
   static const String search="assets/images/search.png";
+  static const String chat="assets/images/chat.png";
+  static const String chat1="assets/images/chat1.png";
+  static const String gallery="assets/images/gallery.png";
 }

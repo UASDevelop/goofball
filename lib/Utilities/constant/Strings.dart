@@ -28,6 +28,7 @@ class AppString{
   static const String Joined="Joined";
   static const String Frowners="Frowners";
   static const String Be_a_Laugher="Be a Laugher";
+  static const String Be_a_Frowners="Be a Frowners";
   static const String Chats="Chats";
   static const String Search_chat_here="Search chat here....";
   static const String All_Messages="All Messages";
