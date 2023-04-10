@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
 
-  List pages = [Laughter(), Commedy(), Favourite(), Profile()];
+  List pages = [Laughter(), CommedyVideo(), Favourite(), Profile()];
 
   @override
   Widget build(BuildContext context) {

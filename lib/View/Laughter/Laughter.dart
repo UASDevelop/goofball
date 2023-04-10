@@ -9,6 +9,7 @@ import 'package:goofbal/View/Laughter/Livesession.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../Utilities/constant/images.dart';
+import '../Commedy/Commedy.dart';
 import 'GetEm.dart';
 
 class Laughter extends StatefulWidget {
@@ -113,7 +114,7 @@ class _LaughterState extends State<Laughter> {
                     return InkWell(
                       onTap:(){
                         if(index==0){
-                          Get.to(Freeforall());
+                          Get.to(CommedyVideo());
                         }else if(index==1){
                           Get.to(GetEm());
                         }else{

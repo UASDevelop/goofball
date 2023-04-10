@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:goofbal/Backend/auth/UserView.dart';
 import 'package:goofbal/Utilities/constant/Colors.dart';
 import 'package:goofbal/Utilities/constant/Strings.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../Utilities/constant/images.dart';
 import '../signup/signup.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends GetView<UserModelView> {
+  UserModelView userModelView=Get.put(UserModelView());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.blue,
-      body: SingleChildScrollView(
+      body:Obx(() => LoadingOverlay(isLoading:userModelView.signloading.value, child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
@@ -32,10 +28,13 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: BoxDecoration(
                     border: Border(
                         bottom: BorderSide(
-                  color: AppColors.white_grey,
-                  width: 0.4,
-                ))),
+                          color: AppColors.white_grey,
+                          width: 0.4,
+                        ))),
                 child: TextFormField(
+                  style:GoogleFonts.poppins(fontWeight:FontWeight.w500,fontSize:15,color:Colors.white),
+
+                  controller:userModelView.emailcntrlr,
                   decoration: InputDecoration(
                     hintStyle: TextStyle(
                         color: AppColors.white_grey,
@@ -55,6 +54,10 @@ class _LoginPageState extends State<LoginPage> {
                         bottom: BorderSide(
                             width: 0.4, color: AppColors.white_grey))),
                 child: TextFormField(
+                  style:GoogleFonts.poppins(fontWeight:FontWeight.w500,fontSize:15,color:Colors.white),
+
+                  obscureText:true,
+                  controller:userModelView.passwordcntrl,
                   decoration: InputDecoration(
                     hintText: AppString.Password,
                     hintStyle: TextStyle(
@@ -78,24 +81,29 @@ class _LoginPageState extends State<LoginPage> {
                         color: AppColors.white_grey,
                         fontWeight: FontWeight.w500),
                   ),
-                 SizedBox(width:10,),
-                 InkWell(
-                   onTap:(){
-                  Get.to(Signup());
-                   },
-                   child: Text(
-                     AppString.Register,
-                     style: GoogleFonts.poppins(
-                         fontSize: 18,
-                         color: AppColors.Brigh_orange,
-                         fontWeight: FontWeight.w500),
-                   ),
-                 )
+                  SizedBox(width:10,),
+                  InkWell(
+                    onTap:(){
+
+                      Get.to(Signup());
+                    },
+                    child: Text(
+                      AppString.Register,
+                      style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          color: AppColors.Brigh_orange,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  )
                 ],
               ),
               SizedBox(
                 height: 30,
               ),
+              InkWell(onTap:(){
+                userModelView.signin();
+              },
+                child:
               Container(
                 height: 50,
                 decoration: BoxDecoration(
@@ -111,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: AppColors.white_grey),
                   ),
                 ),
-              ),
+              )),
               SizedBox(
                 height: 30,
               ),
@@ -164,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
-      ),
+      ))),
     );
   }
 }

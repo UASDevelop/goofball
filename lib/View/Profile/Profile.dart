@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../Backend/auth/useracess.dart';
 import '../../Utilities/constant/Colors.dart';
 import '../../Utilities/constant/Strings.dart';
 import '../../Utilities/constant/images.dart';
@@ -11,14 +12,8 @@ import '../Chatting/chatuser.dart';
 import 'Editingprofile.dart';
 import 'creatpost.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
-
-  @override
-  State<Profile> createState() => _ProfileState();
-}
-
-class _ProfileState extends State<Profile> {
+class Profile extends GetView<UserData> {
+  UserData userData=Get.put(UserData());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,45 +62,39 @@ class _ProfileState extends State<Profile> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(left: 10, right: 10,top:20),
+            padding: EdgeInsets.only(top:20),
             child: Column(
               children: [
                 CircleAvatar(
+                  backgroundImage:NetworkImage(userData.userModel.imageUrl.toString()),
                   radius: 50,
                   backgroundColor: AppColors.white_grey,
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
-                  ),
                 ),
                 SizedBox(height: 5),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "John Smith",
+                      userData.userModel.username.toString(),
                       style: GoogleFonts.poppins(
-                          fontSize: 16,
                           fontWeight: FontWeight.w600,
+                          fontSize: 20,
                           color: AppColors.black),
                     ),
-                    SizedBox(
-                      width: 90,
-                    ),
-                    InkWell(
-                        onTap: () {
-                          Get.to(Chattinguser());
-                        },
-                        child: Image.asset(Images.setting,color:AppColors.greytext,)),
-                    SizedBox(
-                      width: 25,
-                    ),
+                    // InkWell(
+                    //     onTap: () {
+                    //       Get.to(Chattinguser());
+                    //     },
+                    //     child: Image.asset(Images.setting,color:AppColors.greytext,)),
+                    // SizedBox(
+                    //   width: 25,
+                    // ),
                   ],
                 ),
                 SizedBox(height: 5),
                 Text(
-                  AppString.Comedian,
+                  userData.userModel.region.toString(),
                   style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,

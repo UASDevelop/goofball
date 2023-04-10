@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,6 +64,8 @@ class _FavouriteState extends State<Favourite> {
             ),
           )),
       body: ListView.builder(
+        shrinkWrap:true,
+        physics:AlwaysScrollableScrollPhysics(),
         padding:EdgeInsets.only(top:10,bottom:20,left:10,right:10),
         itemCount: 3,
         itemBuilder: (BuildContext context, int index) {
@@ -130,7 +133,7 @@ class _FavouriteState extends State<Favourite> {
                       borderRadius: BorderRadius.circular(10)),
                 ),
               ),
-             
+
               Padding(
                 padding: const EdgeInsets.only(left:70,top:5),
                 child: Row(

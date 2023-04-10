@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:goofbal/Backend/auth/UserView.dart';
 import 'package:goofbal/Utilities/constant/Colors.dart';
 import 'package:goofbal/Utilities/constant/Strings.dart';
 import 'package:goofbal/View/Bottom_navigation/BottomNav.dart';
 import 'package:goofbal/View/auth/login/LoginPage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 
 import '../../../Utilities/constant/images.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({Key? key}) : super(key: key);
-
-  @override
-  State<Signup> createState() => _SignupState();
-}
-
-class _SignupState extends State<Signup> {
-  bool enablepushnotifi = false;
-  bool enablemicrophone = false;
-  bool enablecamera = false;
+class Signup extends GetView<UserModelView> {
+  UserModelView userModelView=Get.put(UserModelView());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.blue,
-      body: SingleChildScrollView(
+      body:Obx(() => LoadingOverlay(isLoading:userModelView.signuploading.value , child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
@@ -36,10 +29,13 @@ class _SignupState extends State<Signup> {
                 decoration: BoxDecoration(
                     border: Border(
                         bottom: BorderSide(
-                  color: AppColors.white_grey,
-                  width: 0.4,
-                ))),
+                          color: AppColors.white_grey,
+                          width: 0.4,
+                        ))),
                 child: TextFormField(
+                  style:GoogleFonts.poppins(fontWeight:FontWeight.w500,fontSize:15,color:Colors.white),
+
+                  controller:userModelView.username,
                   decoration: InputDecoration(
                     hintStyle: TextStyle(
                         color: AppColors.white_grey,
@@ -59,6 +55,9 @@ class _SignupState extends State<Signup> {
                           width: 0.4,
                         ))),
                 child: TextFormField(
+                  style:GoogleFonts.poppins(fontWeight:FontWeight.w500,fontSize:15,color:Colors.white),
+
+                  controller:userModelView.email,
                   decoration: InputDecoration(
                     hintStyle: TextStyle(
                         color: AppColors.white_grey,
@@ -79,6 +78,9 @@ class _SignupState extends State<Signup> {
                         bottom: BorderSide(
                             width: 0.4, color: AppColors.white_grey))),
                 child: TextFormField(
+                  style:GoogleFonts.poppins(fontWeight:FontWeight.w500,fontSize:15,color:Colors.white),
+                  obscureText:true,
+                  controller:userModelView.password,
                   decoration: InputDecoration(
                     hintText: AppString.Password,
                     hintStyle: TextStyle(
@@ -129,12 +131,12 @@ class _SignupState extends State<Signup> {
                       activeColor: Colors.white54,
                       checkColor: AppColors.blue,
                       // fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: enablepushnotifi,
+                      value: userModelView.notification.value,
                       shape: CircleBorder(),
                       onChanged: (bool? value) {
-                        setState(() {
-                          enablepushnotifi = value!;
-                        });
+
+                          userModelView.notification.value = value!;
+
                       },
                     )),
                 SizedBox(
@@ -155,12 +157,12 @@ class _SignupState extends State<Signup> {
                       activeColor: Colors.white54,
                       checkColor: AppColors.blue,
                       // fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: enablemicrophone,
+                      value:  userModelView.microphone.value,
                       shape: CircleBorder(),
                       onChanged: (bool? value) {
-                        setState(() {
-                          enablemicrophone = value!;
-                        });
+
+                        userModelView.microphone.value = value!;
+
                       },
                     )),
                 SizedBox(
@@ -181,12 +183,12 @@ class _SignupState extends State<Signup> {
                       activeColor: Colors.white54,
                       checkColor: AppColors.blue,
                       // fillColor: MaterialStateProperty.resolveWith(getColor),
-                      value: enablecamera,
+                      value: userModelView.camera.value,
                       shape: CircleBorder(),
                       onChanged: (bool? value) {
-                        setState(() {
-                          enablecamera = value!;
-                        });
+
+                        userModelView.camera.value = value!;
+
                       },
                     )),
                 SizedBox(
@@ -201,27 +203,27 @@ class _SignupState extends State<Signup> {
                 ),
               ]),
               SizedBox(height:30,),
-             InkWell(
-               onTap:(){
-                 Get.to(HomePage());
-               },
-               child: Container(
-                 height: 50,
-                 decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(20),
-                     color: AppColors.Brigh_orange),
-                 width: MediaQuery.of(context).size.width / 1.1,
-                 child: Center(
-                   child: Text(
-                     AppString.Register,
-                     style: GoogleFonts.poppins(
-                         fontSize: 18,
-                         fontWeight: FontWeight.w600,
-                         color: AppColors.white_grey),
-                   ),
-                 ),
-               ),
-             ),
+              InkWell(
+                onTap:(){
+                  userModelView.Signup();
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: AppColors.Brigh_orange),
+                  width: MediaQuery.of(context).size.width / 1.1,
+                  child: Center(
+                    child: Text(
+                      AppString.Register,
+                      style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.white_grey),
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -283,7 +285,7 @@ class _SignupState extends State<Signup> {
             ],
           ),
         ),
-      ),
+      ))),
     );
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "957631537092",
+    "project_id": "goofball-c6ba6",
+    "storage_bucket": "goofball-c6ba6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:957631537092:android:f6f473fcd3b51328100e91",
+        "android_client_info": {
+          "package_name": "com.example.goofbal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957631537092-io9e3tu19hlqqnk6nl0gtqbkmhaauk8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIW7LYfDXf6KQfjqDufVG5mzGLDo7_la4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957631537092-93vhaf3tdav0v95ahq35rieni9kiacqi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
